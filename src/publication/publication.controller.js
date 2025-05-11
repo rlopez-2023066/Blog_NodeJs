@@ -69,7 +69,7 @@ export const deletePublication = async(req, res) => {
     try{
         const {id} = req.body
 
-        const publication = await Publication.findByIdAndDelete(id)
+        await Publication.findByIdAndDelete(id)
 
 
         return res.status(200).send(
@@ -96,14 +96,12 @@ export const deletePublication = async(req, res) => {
 export const updatePublication = async(req, res) => {
     try{
 
-        const {id, title, content, curse } = req.body
+        const {id, ...data}  = req.body
 
 
         const publication = await Publication.findByIdAndUpdate(
             id, 
-            title,
-            content,
-            curse,
+            data,
             {new: true}
         )
 
