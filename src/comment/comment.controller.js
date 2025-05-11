@@ -102,3 +102,59 @@ export const getCommentByPublication = async(req, res) => {
         )
     }
 }
+
+//Delete Comment
+export const deleteComment = async(req, res) => {
+    try{
+        const {id} = req.body
+
+        await Comment.findByIdAndDelete(id)
+
+        return res.status(200).send(
+            {
+                success: true,
+                message: 'Comment deleted successfully'
+            }
+        )
+    }catch(error){
+        console.error(error)
+        return res.status(500).send(
+            {
+                sucess:false,
+                message: 'Internal Error'
+            }
+        )
+        
+    }
+}
+
+//Update Comment
+export const updateComment = async(req, res) => {
+    try{
+        const {id, ...data} = req.body
+
+        const comment = await Comment.findByIdAndUpdate(
+            id, 
+            data,
+            {new: true}
+        )
+        
+        return res.status(201).send(
+            {
+                success: true,
+                message: 'Publication updated successfully',
+                comment
+            }
+        )
+
+
+    }catch(error){
+        console.error(error);
+        return res.status(500).send(
+            {
+                success:false,
+                message: 'Internal Error'
+            }
+        )
+    }
+}
