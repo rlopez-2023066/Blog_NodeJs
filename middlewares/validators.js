@@ -40,8 +40,9 @@ export const validateDeletePublication = [
 export const validateUpdatePublication = [
     body('id')
     .notEmpty()
-    .custom(validateExistPublication),
-
+    .custom(async (id) => {
+            await validateExistPublication(id); // Llama a la función de validación
+        }),
     body('title')
     .optional()
     .notEmpty()
@@ -67,6 +68,6 @@ export const validateUpdatePublication = [
     .notEmpty()
     .custom(notRequiredField),
 
-    validateErrorsWithoutFiles
+    validateErrors
 
 ]
