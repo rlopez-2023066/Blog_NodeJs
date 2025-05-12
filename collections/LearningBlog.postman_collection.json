@@ -7,36 +7,210 @@
 	},
 	"item": [
 		{
-			"name": "Publication",
+			"name": "Comment",
 			"item": [
 				{
 					"name": "addComment",
 					"request": {
 						"method": "POST",
-						"header": []
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Pablo Lopez",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "El Profe si cae re bien",
+									"type": "text"
+								},
+								{
+									"key": "publicationId",
+									"value": "682017e4773b19eaa0bf8390",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2003/v1/comment/addComment",
+							"host": [
+								"localhost"
+							],
+							"port": "2003",
+							"path": [
+								"v1",
+								"comment",
+								"addComment"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "getComment",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:2003/v1/comment/getComments",
+							"host": [
+								"localhost"
+							],
+							"port": "2003",
+							"path": [
+								"v1",
+								"comment",
+								"getComments"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "getCommentByPublication",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idPublication",
+									"value": "682017e4773b19eaa0bf8390",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2003/v1/comment/getCommentByPublication",
+							"host": [
+								"localhost"
+							],
+							"port": "2003",
+							"path": [
+								"v1",
+								"comment",
+								"getCommentByPublication"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteComment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "68220a1cd70f9677b01f36b2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2003/v1/comment/deleteComment",
+							"host": [
+								"localhost"
+							],
+							"port": "2003",
+							"path": [
+								"v1",
+								"comment",
+								"deleteComment"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateComment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "68220ad9e923a20b18d15fe8",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "DiegoLopez",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "No ese profe ya me cae mal",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2003/v1/comment/updateComment",
+							"host": [
+								"localhost"
+							],
+							"port": "2003",
+							"path": [
+								"v1",
+								"comment",
+								"updateComment"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
 					},
 					"response": []
 				}
 			]
 		},
 		{
-			"name": "Comment",
+			"name": "Publication",
 			"item": [
 				{
 					"name": "addPublication",
@@ -80,9 +254,16 @@
 				},
 				{
 					"name": "getPublications",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
 						"url": {
 							"raw": "localhost:2003/v1/publication/getPublications",
 							"host": [
@@ -102,7 +283,36 @@
 					"name": "deletePublication",
 					"request": {
 						"method": "DELETE",
-						"header": []
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "682017c9bceb17643d00b165",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2003/v1/publication/deletePublication",
+							"host": [
+								"localhost"
+							],
+							"port": "2003",
+							"path": [
+								"v1",
+								"publication",
+								"deletePublication"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
 					},
 					"response": []
 				},
@@ -116,12 +326,12 @@
 							"urlencoded": [
 								{
 									"key": "id",
-									"value": "682017e4773b19eaa0bf8390",
+									"value": "682017c9bceb17643d00b165",
 									"type": "text"
 								},
 								{
 									"key": "title",
-									"value": "Al profesor NOJ lo amo",
+									"value": "Al profesor NOJ lo amo y mucho <3",
 									"type": "text"
 								}
 							]
