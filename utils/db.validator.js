@@ -25,3 +25,11 @@ export const validateExistComment = async(id) => {
         throw new Error('Comment not found')
     }
 }
+/*
+export const validateExistPublicationComment = async(publicationId) =>{
+    const publication = await Publication.findById(publicationId)
+    if(!publication0){
+        throw new Error('Publication not found')
+    }
+}
+*/
