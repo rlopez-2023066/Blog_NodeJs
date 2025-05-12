@@ -5,6 +5,7 @@ import morgan from 'morgan'
 import helmet from 'helmet'
 import cors from 'cors'
 import publicationRoutes from './../src/publication/publication.routes.js'
+import commentsRouter from '../src/comment/comment.routes.js'
 
 const configs = (app) => {
     app.use(express.json())
@@ -16,6 +17,7 @@ const configs = (app) => {
 
 const routes = (app) => {
     app.use('/v1/publication', publicationRoutes)
+    app.use('/v1/comment', commentsRouter)
 }
 
 export const initServer = () => {
