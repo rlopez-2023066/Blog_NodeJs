@@ -4,11 +4,11 @@ import Publication from '../publication/publication.model.js'
 
 export const addComment = async(req, res) => {
     try{
-        const {name, content, publication} = req.body
+        const {name, content, publicationId} = req.body
 
-        const publicationData = await Publication.findById(publication)
+        const publicationData = await Publication.findById(publicationId)
 
-        const comment = new Comment(name, content, date, publication)
+        const comment = new Comment({name, content, publication: publicationId})
 
         publicationData.comments.push(
             {
@@ -17,13 +17,16 @@ export const addComment = async(req, res) => {
             }
         )
 
+        await publicationData.save()
+
 
         await comment.save()
 
         return res.status(201).send(
             {
                 success: true,
-                message:'Comment saved successfully'
+                message:'Comment saved successfully',
+                comment
             }
         )
     }catch (error){
@@ -75,7 +78,7 @@ export const getComment = async(req, res) => {
 //Get Comments by Publication
 export const getCommentByPublication = async(req, res) => {
     try{
-        const idPublication = req.body
+        const {idPublication} = req.body
     
         const comments = await Comment.find({
             publication: idPublication
