@@ -78,7 +78,8 @@ export const getComment = async(req, res) => {
 //Get Comments by Publication
 export const getCommentByPublication = async(req, res) => {
     try{
-        const {idPublication} = req.body
+        const {idPublication} = req.query
+
     
         const comments = await Comment.find({
             publication: idPublication
