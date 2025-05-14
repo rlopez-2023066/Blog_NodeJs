@@ -1,5 +1,6 @@
 import { 
-    body 
+    body,
+    query
 } from 'express-validator'
 
 import{
@@ -12,6 +13,8 @@ import {
     validateExistPublication,
     validateExistComment
 } from './../utils/db.validator.js'
+
+import Publication from '../src/publication/publication.model.js'
 
 export const validateRegisterPublication = [ 
  
@@ -42,7 +45,7 @@ export const validateUpdatePublication = [
     body('id')
     .notEmpty()
     .custom(async (id) => {
-            await validateExistPublication(id); 
+            await validateExistPublication(id)  
         }),
     body('title')
     .optional()
@@ -75,29 +78,34 @@ export const validateUpdatePublication = [
 
 export const validateRegisterComment = [
     body('name')
-    .notEmpty()
-    .withMessage('You cant leave the name empty'),
+        .notEmpty()
+        .withMessage('Name is not empty'),
 
     body('content')
-    .notEmpty()
-    .withMessage('You cant leave the content empty'),
+        .notEmpty()
+        .withMessage('Content is not empty'),
 
     body('publicationId')
-    .notEmpty()
-    .withMessage('You cant leave the publicationId empty')
-    .custom(async (publicationId) => {
-            await validateExistPublication(publicationId); 
-    }),
+        .notEmpty()
+        .withMessage('Id is not empty')
+        .custom(async (publicationId) => {
+            const exists = await Publication.exists({ _id: publicationId }) 
+            if (!exists) {
+                throw new Error('ID Publication not found') 
+            }
+            return true 
+        }),
     
     validateErrors
-]
+] 
+
 
 export const validateCommentByPublication = [
-    body('idPublication')
+    query('idPublication')  
     .notEmpty()
     .withMessage('You cant leave the idPublication empty')
     .custom(async (idPublication) => {
-            await validateExistPublication(idPublication); 
+            await validateExistPublication(idPublication)  
     }),
 
     validateErrors
@@ -108,7 +116,7 @@ export const validateDeleteComment = [
     .notEmpty()
     .withMessage('You cant leave the ID empty')
     .custom(async (id) => {
-            await validateExistComment(id); 
+            await validateExistComment(id)  
     }),
 
     validateErrors
@@ -120,7 +128,7 @@ export const validateUpdateComment = [
     .notEmpty()
     .withMessage('ID cannot be empty')
     .custom(async (id) => {
-            await validateExistComment(id); 
+            await validateExistComment(id)  
     }),
 
     body('name')
