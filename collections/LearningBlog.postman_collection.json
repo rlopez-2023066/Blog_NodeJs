@@ -24,7 +24,7 @@
 								},
 								{
 									"key": "content",
-									"value": "El Profe si cae re bien",
+									"value": "",
 									"type": "text"
 								},
 								{
@@ -109,7 +109,7 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:2003/v1/comment/getCommentByPublication",
+							"raw": "localhost:2003/v1/comment/getCommentByPublication?idPublication=682017e4773b19eaa0bf8390",
 							"host": [
 								"localhost"
 							],
@@ -118,6 +118,12 @@
 								"v1",
 								"comment",
 								"getCommentByPublication"
+							],
+							"query": [
+								{
+									"key": "idPublication",
+									"value": "682017e4773b19eaa0bf8390"
+								}
 							]
 						}
 					},
@@ -175,12 +181,12 @@
 								},
 								{
 									"key": "name",
-									"value": "DiegoLopez",
+									"value": "",
 									"type": "text"
 								},
 								{
 									"key": "content",
-									"value": "No ese profe ya me cae mal",
+									"value": "",
 									"type": "text"
 								}
 							]
@@ -222,12 +228,12 @@
 							"urlencoded": [
 								{
 									"key": "title",
-									"value": "Al profesor NOJ lo quieren mucho.",
+									"value": "",
 									"type": "text"
 								},
 								{
 									"key": "content",
-									"value": "En este año",
+									"value": "",
 									"type": "text"
 								},
 								{
@@ -331,7 +337,7 @@
 								},
 								{
 									"key": "title",
-									"value": "Al profesor NOJ lo amo y mucho <3",
+									"value": "",
 									"type": "text"
 								}
 							]
