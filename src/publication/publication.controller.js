@@ -33,7 +33,12 @@ export const addPublication = async(req, res) => {
 //Get Publications
 export const getPublications = async(req, res) => {
     try{
-        const publications = await Publication.find()
+        const publications = await Publication.find().populate(
+            {
+                path: 'comments',
+                options: {sort: {date: -1}}
+            }
+        )
 
         if(!publications || publications.length === 0) {
             return res.status(404).send(
